@@ -6,6 +6,7 @@ def get_mask_card_number(card_number: str) -> str:
     raise ValueError("Номер должен состоять только из цифр")
   return f"{card_number[0:4]} {card_number[4:6]} ** {card_number[12:16]}"
 
+
 def get_mask_account(account_number: str) -> str:
   """Функция маскирует номер принимаемого счёта"""
   if len(account_number) != 20:
