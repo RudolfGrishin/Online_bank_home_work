@@ -17,16 +17,10 @@ print(mask_account_card("Visa Platinum 7000792289606361"))
 print(mask_account_card("Maestro 7000792289606361"))
 
 
-def get_date(user_date: str) -> str:
+def get_date(old_data: str) -> str:
     """Функция принимает от пользователя на вход строку с датой и возвращает в формате день, месяц и год."""
-    slice_date = user_date[:10]
-    date_clear = ""
-    for one_symbol in range(len(slice_date)):
-        if slice_date[one_symbol].isdigit():
-            date_clear += slice_date[one_symbol]
-        else:
-            date_clear += ""
-    date_clear_split = date_clear.split()
-    split_date = date_clear_split[::-1]
-    result = ".".join(split_date)
-    return result
+    data = old_data[0:10].split("-")
+    return ".".join(data[::-1])
+
+
+print(get_date("2024-03-11T02:26:18.671407"))
