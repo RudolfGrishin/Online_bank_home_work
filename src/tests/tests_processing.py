@@ -1,7 +1,7 @@
 import pytest
 from typing import List, Dict, Any
 
-# Функции из папки "processing.py"
+# Ваши функции
 def filter_by_state(data: List[Dict[str, Any]], state: str = "EXECUTED") -> List[Dict[str, Any]]:
     """Фильтрует список словарей по значению ключа 'state'"""
     return [item for item in data if item.get("state") == state]
@@ -12,7 +12,7 @@ def sort_by_date(data: List[Dict[str, Any]], reverse: bool = True) -> List[Dict[
 
 # Фикстура с тестовыми данными
 @pytest.fixture
-def list_of_dicts():
+def list_of_dicts() -> List[Dict[str, Any]]:
     return [
         {"id": 41428829, "state": "EXECUTED", "date": "2019-07-03T18:35:29.512364"},
         {"id": 939719570, "state": "EXECUTED", "date": "2018-06-30T02:08:58.425572"},
@@ -26,7 +26,7 @@ def list_of_dicts():
     ("CANCELED", 2),
     ("NON_EXISTENT_STATE", 0)
 ])
-def test_filter_by_state(list_of_dicts, state, expected_count):
+def test_filter_by_state(list_of_dicts: List[Dict[str, Any]], state: str, expected_count: int) -> None:
     filtered_items = filter_by_state(list_of_dicts, state)
     assert len(filtered_items) == expected_count
     assert all(item["state"] == state for item in filtered_items) if expected_count > 0 else True
@@ -46,6 +46,6 @@ def test_filter_by_state(list_of_dicts, state, expected_count):
         "2019-07-03T18:35:29.512364"   # Самая поздняя
     ])
 ])
-def test_sort_by_date(list_of_dicts, reverse, expected_order):
+def test_sort_by_date(list_of_dicts: List[Dict[str, Any]], reverse: bool, expected_order: List[str]) -> None:
     sorted_items = sort_by_date(list_of_dicts, reverse)
     assert [item["date"] for item in sorted_items] == expected_order
