@@ -26,9 +26,9 @@ def test_get_mask_card_number(valid_card_number: str, card_number: str, expected
 @pytest.mark.parametrize(
     "card_number",
     [
-        "12345678",  # Слишком короткий
-        "123456781234567890",  # Слишком длинный
-        "1234abcd12345678",  # Содержит буквы
+        "12345678",
+        "123456781234567890",
+        "1234abcd12345678",
     ],
 )
 def test_get_mask_card_number_invalid(card_number: str) -> None:
@@ -56,9 +56,9 @@ def test_get_mask_account(valid_account_number: str, account_number: str, expect
 @pytest.mark.parametrize(
     "account_number",
     [
-        "1234567890",  # Слишком короткий
-        "123456789012345678901234",  # Слишком длинный
-        "1234abcd901234567890",  # Содержит буквы
+        "1234567890",
+        "123456789012345678901234",
+        "1234abcd901234567890",
     ],
 )
 def test_get_mask_account_invalid(account_number: str) -> None:
