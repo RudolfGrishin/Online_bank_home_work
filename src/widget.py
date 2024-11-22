@@ -6,10 +6,12 @@ def mask_account_card(number: str) -> str:
     original_number = number.split()[-1]
     if len(original_number) == 16:
         mask_number_1 = get_mask_card_number(original_number)
-        result = f"{number[:-16]}{mask_number_1}"
+        result = f"{number[:-len(original_number)]}{mask_number_1}"
     elif len(original_number) == 20:
         mask_number_2 = get_mask_account(original_number)
-        result = f"{number[:-20]}{mask_number_2}"
+        result = f"{number[:-len(original_number)]}{mask_number_2}"
+    else:
+        raise ValueError("Неверная длина номера карты или счета")
     return result
 
 
