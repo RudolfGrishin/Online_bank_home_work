@@ -43,7 +43,8 @@ def card_number_generator(start: int, end: int) -> Iterator[str]:
 )
 def card_number_test_data(request: pytest.FixtureRequest) -> Tuple[int, int, List[str]]:
     """Фикстура для тестовых данных, возвращает параметры для теста."""
-    return request.param  # Здесь мы возвращаем параметр, который уже соответствует типу
+    param = request.param  # Получаем параметры
+    return (param[0], param[1], param[2])  # Возвращаем кортеж с явным указанием типов
 
 
 # Параметризованный тест

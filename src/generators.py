@@ -24,10 +24,14 @@ for transaction in filter_by_currency(transactions, "USD"):
 
 # Реализация функции "transaction_descriptions".
 def transaction_descriptions(transactions: List[Dict[str, Any]]) -> Iterator[str]:
-    """Генератор который возвращает описание каждой транзакции."""
+    """Генератор, который возвращает описание каждой транзакции."""
 
     for transaction in transactions:
-        description = f"Transaction ID: {transaction.get('id')}, Amount: {transaction.get('amount')} {transaction.get('currency')}"
+        transaction_id = transaction.get("id")
+        amount = transaction.get("amount")
+        currency = transaction.get("currency")
+
+        description = f"Transaction ID: {transaction_id}, " f"Amount: {amount} {currency}"
         yield description
 
 
