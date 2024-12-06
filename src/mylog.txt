@@ -1,0 +1,52 @@
+Начало выполнения функции: my_function с аргументами: (1, 2) {}
+my_function ok: 3
+Начало выполнения функции: my_function с аргументами: (1, '2') {}
+my_function error: TypeError. Inputs: (1, '2'), {}
+Начало выполнения функции: my_function с аргументами: (1, 2) {}
+my_function ok: 3
+Начало выполнения функции: my_function с аргументами: (1, '2') {}
+my_function error: TypeError. Inputs: (1, '2'), {}
+Начало выполнения функции: my_function с аргументами: (1, 2) {}
+my_function ok: 3
+Начало выполнения функции: my_function с аргументами: (1, '2') {}
+my_function error: ValueError. Inputs: (1, '2'), {}
+Начало выполнения функции: my_function с аргументами: (1, 2) {}
+my_function ok: 3
+Начало выполнения функции: my_function с аргументами: (1, '2') {}
+my_function error: ValueError. Inputs: (1, '2'), {}
+Начало выполнения функции: my_function с аргументами: (1, 2) {}
+my_function ok: 3
+Начало выполнения функции: my_function с аргументами: (1, '2') {}
+my_function error: ValueError. Inputs: (1, '2'), {}
+Начало выполнения функции: my_function с аргументами: (1, 2) {}
+my_function ok: 3
+Начало выполнения функции: my_function с аргументами: (1, '2') {}
+my_function error: ValueError. Inputs: (1, '2'), {}
+Начало выполнения функции: my_function с аргументами: (1, 2) {}
+my_function ok: 3
+Начало выполнения функции: my_function с аргументами: (1, '2') {}
+my_function error: ValueError. Inputs: (1, '2'), {}
+Начало выполнения функции: my_function с аргументами: (1, 2) {}
+my_function ok: 3
+Начало выполнения функции: my_function с аргументами: (1, '2') {}
+my_function error: ValueError. Inputs: (1, '2'), {}
+Начало выполнения функции: my_function с аргументами: (1, 2) {}
+my_function ok: 3
+Начало выполнения функции: my_function с аргументами: (1, 2) {}
+my_function ok: 3
+Начало выполнения функции: my_function с аргументами: (1, 2) {}
+my_function ok: 3
+Начало выполнения функции: my_function с аргументами: (1, 2), {}
+my_function ok: 3
+Начало выполнения функции: my_function с аргументами: (1, 2), {}
+my_function ok: 3
+Начало выполнения функции: my_function с аргументами: (1, 2), {}
+my_function ok: 3
+Начало выполнения функции: my_function с аргументами: (1, 2), {}
+my_function ok: 3
+Начало выполнения функции: my_function с аргументами: (1, 2), {}
+my_function ok: 3
+Начало выполнения функции: my_function с аргументами: (1, 2), {}
+my_function ok: 3
+Начало выполнения функции: my_function с аргументами: (1, 2), {}
+my_function ok: 3
