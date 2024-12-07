@@ -6,19 +6,40 @@ from typing import Dict, Union, Optional
 # Загружаем переменные окружения из файла .env
 load_dotenv()
 
+# Определяем типы для удобства
+AmountDict = Dict[str, Union[float, Dict[str, str]]]
 
-def convert_transaction_to_rub(transaction: Dict[str, Union[str, float]]) -> float:
-    """Конвертирует сумму транзакции в рубли."""
-    amount: Optional[Union[str, float]] = transaction.get("amount")
-    currency = transaction.get("currency")
+
+def convert_transaction_to_rub(transaction: Dict[str, AmountDict]) -> float:
+    """ Конвертирует сумму транзакции в рубли. """
+
+    # Извлекаем вложенный словарь operationAmount
+    operation_amount = transaction.get("operationAmount")
+
+    if not isinstance(operation_amount, dict):
+        raise ValueError("operationAmount должен быть словарем.")
+
+    # Извлекаем сумму и валюту
+    amount_value = operation_amount.get("amount")
+
+    if not isinstance(amount_value, (float, int)):  # Проверяем, что это число
+        raise ValueError("Сумма транзакции должна быть числом.")
+
+    currency_info = operation_amount.get("currency")
+
+    if not isinstance(currency_info, dict):
+        raise ValueError("currency должен быть словарем.")
+
+    currency: Optional[str] = currency_info.get("code")
 
     if currency not in ["RUB", "USD", "EUR"]:
         raise ValueError(f"Валюта {currency} не поддерживается.")
 
+    if amount_value is None:
+        raise ValueError("Сумма транзакции не может быть None.")
+
     if currency == "RUB":
-        if amount is None:
-            raise ValueError("Сумма транзакции не может быть None.")
-        return float(amount)  # Если валюта уже в рублях, просто возвращаем сумму
+        return float(amount_value)  # Если валюта уже в рублях, просто возвращаем сумму
 
     # Получаем ключ API из переменной окружения
     api_key = os.getenv("API_KEY")
@@ -26,7 +47,7 @@ def convert_transaction_to_rub(transaction: Dict[str, Union[str, float]]) -> flo
         raise ValueError("Ключ API не найден в переменных окружения.")
 
     # Формируем URL для API
-    url = f"https://api.apilayer.com/exchangerates_data/convert?to=RUB&from={currency}&amount={amount}"
+    url = f"https://api.apilayer.com/exchangerates_data/convert?to=RUB&from={currency}&amount={amount_value}"
 
     headers = {"apikey": api_key}
 
@@ -46,7 +67,7 @@ def convert_transaction_to_rub(transaction: Dict[str, Union[str, float]]) -> flo
 
 
 # Пример использования:
-transaction_example: Dict[str, Union[str, float]] = {"amount": 100.0, "currency": "USD"}
+transaction_example: Dict[str, AmountDict] = {"operationAmount": {"amount": 100.0, "currency": {"code": "USD"}}}
 
 try:
     result = convert_transaction_to_rub(transaction_example)
