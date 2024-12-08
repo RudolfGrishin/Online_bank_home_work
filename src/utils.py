@@ -7,19 +7,19 @@ from typing import List, Dict, Any, Union
 log_file_path = os.path.join("..", "logs", "utils.log")  # Путь к логам из папки src
 print(f"Логи будут записываться в: {os.path.abspath(log_file_path)}")
 
-# Создание отдельного логгера для модуля utils
+# Создание отдельного логгера
 logger = logging.getLogger("utils")
 logger.setLevel(logging.DEBUG)  # Установлен уровень логирования не меньше, чем DEBUG
 
-# Настройка обработчика для логера модуля utils
+# Настройка обработчика для логера
 file_handler = logging.FileHandler(log_file_path, mode="w", encoding="utf-8")
 file_handler.setLevel(logging.DEBUG)
 
-# Настройка форматировщика для логера модуля utils
+# Настройка форматировщика для логера
 file_formatter = logging.Formatter("%(asctime)s - %(name)s - %(levelname)s - %(message)s")
 file_handler.setFormatter(file_formatter)
 
-# Добавление обработчика к логгеру модуля utils
+# Добавление обработчика к логгеру
 logger.addHandler(file_handler)
 
 
@@ -28,7 +28,7 @@ def load_transactions(file_path: str) -> List[Dict[str, Any]]:
 
     # Проверяем, существует ли файл
     if not os.path.isfile(file_path):
-        logger.error(f"Ошибка: Файл '{file_path}' не найден.")  # Логирование ошибки
+        logger.error(f"Ошибка: Файл '{file_path}' не найден.")
         return []
 
     # Пытаемся открыть и загрузить данные из файла
@@ -38,28 +38,27 @@ def load_transactions(file_path: str) -> List[Dict[str, Any]]:
 
             # Проверяем, является ли загруженные данные списком
             if isinstance(data, list):
-                logger.info("Успешно загружены транзакции из файла.")  # Логирование успешного случая
+                logger.info("Успешно загружены транзакции из файла.")
                 return data
             else:
-                logger.error("Ошибка: Загруженные данные не являются списком.")  # Логирование ошибки
+                logger.error("Ошибка: Загруженные данные не являются списком.")
                 return []
     except FileNotFoundError:
-        logger.error(f"Ошибка: Файл '{file_path}' не найден.")  # Логирование ошибки
+        logger.error(f"Ошибка: Файл '{file_path}' не найден.")
         return []
     except json.JSONDecodeError:
-        logger.error(f"Ошибка: Не удалось декодировать JSON из файла '{file_path}'.")  # Логирование ошибки
+        logger.error(f"Ошибка: Не удалось декодировать JSON из файла '{file_path}'.")
         return []
     except IOError:
-        logger.error(f"Ошибка: Не удалось прочитать файл '{file_path}'.")  # Логирование ошибки
+        logger.error(f"Ошибка: Не удалось прочитать файл '{file_path}'.")
         return []
 
 
 if __name__ == "__main__":
-    """
-    Пример использования функции load_transactions для загрузки транзакций
-    из файла operations.json и их вывода на экран.
-    """
-    # Указываем путь к файлу operations.json (предполагается, что он находится в папке src/Data)
+    """ Пример использования функции load_transactions для загрузки транзакций
+    из файла operations.json и их вывода на экран. """
+
+    # Указываем путь к файлу operations.json
     transactions_file_path: str = os.path.join("Data", "operations.json")
     transactions: List[Dict[str, Any]] = load_transactions(transactions_file_path)
     print("Загруженные транзакции:", transactions)

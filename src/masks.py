@@ -69,11 +69,11 @@ if __name__ == "__main__":
         print(get_mask_account("12345678901234567890"))
 
         # Примеры с некорректными данными для тестирования логирования ошибок
-        print(get_mask_card_number("12345"))  # Неверная длина
-        print(get_mask_account("123"))  # Неверная длина
-        print(get_mask_account("12345678901234567890abc"))  # Не цифры
+        print(get_mask_card_number("12345"))
+        print(get_mask_account("123"))
+        print(get_mask_account("12345678901234567890abc"))
     except Exception as e:
-        logger.error(f"Произошла ошибка: {e}")  # Логирование общей ошибки
+        logger.error(f"Произошла ошибка: {e}")
 
 
 # def get_mask_card_number(card_number: str) -> str:
