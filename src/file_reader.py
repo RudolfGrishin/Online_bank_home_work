@@ -38,7 +38,7 @@ def read_transactions_from_excel(file_path: str) -> List[Dict[Any, Any]]:
         return []
 
 
-# Пример использования
+
 if __name__ == "__main__":
     csv_file_path = "Data/transactions.csv"
     excel_file_path = "Data/transactions_excel.xlsx"

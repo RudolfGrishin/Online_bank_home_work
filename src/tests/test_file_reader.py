@@ -68,6 +68,6 @@ class TestFileReader(unittest.TestCase):
         # Проверка, что возвращается пустой список
         self.assertEqual(transactions, [])
 
-
+#запуск тестов
 if __name__ == "__main__":
     unittest.main()
