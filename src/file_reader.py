@@ -6,7 +6,7 @@ def read_transactions_from_csv(file_path: str) -> List[Dict[Any, Any]]:
     """Считывает финансовые операции из CSV файла."""
 
     try:
-        df = pd.read_csv(file_path)
+        df = pd.read_csv(file_path, sep=";")  # указал разделитель
         transactions: List[Dict[Any, Any]] = df.to_dict(orient="records")
         return transactions
     except FileNotFoundError:
@@ -36,7 +36,6 @@ def read_transactions_from_excel(file_path: str) -> List[Dict[Any, Any]]:
     except Exception as e:
         print(f"Ошибка при чтении файла {file_path}: {e}")
         return []
-
 
 
 if __name__ == "__main__":
